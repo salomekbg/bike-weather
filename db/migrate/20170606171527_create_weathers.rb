@@ -2,7 +2,7 @@ class CreateWeathers < ActiveRecord::Migration[5.0]
   def change
     create_table :weathers do |t|
       t.string :date
-      t.integer :precipitation
+      t.float :precipitation
       t.integer :tmax
       t.integer :tmin
 

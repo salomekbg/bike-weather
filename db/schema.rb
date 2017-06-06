@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170606171527) do
 
   create_table "weathers", force: :cascade do |t|
     t.string   "date"
-    t.integer  "precipitation"
+    t.float    "precipitation"
     t.integer  "tmax"
     t.integer  "tmin"
     t.datetime "created_at",    null: false
