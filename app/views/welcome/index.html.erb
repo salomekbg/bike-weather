@@ -1,0 +1,62 @@
+<%= flash[:notice] %>
+
+<% if !@citibikes.empty? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Trips</th>
+        <th>Miles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @citibikes.each do |citibike| %>
+        <tr>
+          <td><%= citibike.date %></td>
+          <td><%= citibike.trips %></td>
+          <td><%= citibike.miles %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<% if !@weathers.empty? %>
+<br />
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Precipitation</th>
+        <th>Temperature High</th>
+        <th>Temperature Low</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @weathers.each do |weather| %>
+        <tr>
+          <td><%= weather.date %></td>
+          <td><%= weather.precipitation %></td>
+          <td><%= weather.tmax %></td>
+          <td><%= weather.tmin %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<div>
+<h3>Import a NYC Citibike CSV File:</h3>
+<!--multipart will pull the file information  -->
+  <%= form_tag import_citibikes_path, multipart: true do %>
+    <%= file_field_tag :citibike_file %>
+    <%= submit_tag "Import Citibike CSV" %>
+  <% end %>
+</div>
+
+<div>
+<h3>Import a NYC Weather CSV File:</h3>
+  <%= form_tag import_weathers_path, multipart: true do %>
+    <%= file_field_tag :weather_file %>
+    <%= submit_tag "Import Weather CSV" %>
+  <% end %>
+</div>
