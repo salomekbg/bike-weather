@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyString
+  trips: 1
+  miles: 1
+
+two:
+  date: MyString
+  trips: 1
+  miles: 1

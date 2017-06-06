@@ -1,0 +1,2 @@
+class CitibikesController < ApplicationController
+end
