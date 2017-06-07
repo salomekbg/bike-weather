@@ -4,10 +4,9 @@ class Weather < ApplicationRecord
   def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
       weather_hash = row.to_h
-      new_date = weather_hash["date"][4..5] + "/" + weather_hash["date"][6..7] + "/" + weather_hash["date"][0..3]
-      date_array = new_date.split('/')
-      weather_hash["date"] = date_array.join('/')
-      Weather.create!(weather_hash)
+      new_date = weather_hash["DATE"][4..5] + "/" + weather_hash["DATE"][6..7] + "/" + weather_hash["DATE"][0..3]
+      weather_hash["DATE"] = new_date
+      Weather.create(date: weather_hash["DATE"], precipitation: weather_hash["PRCP"], tmax: weather_hash["TMAX"], tmin: weather_hash["TMIN"])
     end
   end
 
