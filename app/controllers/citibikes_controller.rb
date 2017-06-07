@@ -1,7 +1,11 @@
 class CitibikesController < ApplicationController
 
   def index
-    @citibikes = Citibike.all
+    if params[:search]
+      @citibikes = Citibike.search(params[:search])
+    else
+      @citibikes = Citibike.all.order('date')
+    end
   end
 
   def import
