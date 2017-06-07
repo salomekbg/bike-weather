@@ -1,7 +1,7 @@
 class WeathersController < ApplicationController
 
   def index
-    @weathers = Weather.all
+    @weathers = Weather.all.order('date')
   end
 
   def import
