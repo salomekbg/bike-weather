@@ -1,8 +1,10 @@
 <h1>Weather Information</h1>
+<%= flash[:notice] %><p>
 <% if @weathers == nil || @weathers.empty? %>
   <h3>No Weather Information to Display!</h3>
 <% else %>
   <%= button_to "Clear Weather Data", weathers_path, method: "delete" %>
+  <br />
   <table>
     <thead>
       <tr>
