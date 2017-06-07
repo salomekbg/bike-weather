@@ -7,15 +7,16 @@
   <% else %>
     <% @citibikes.each do |citibike|%>
       Total Trips: <%= citibike.trips %><p>
-      Total Mileage: <%= citibike.miles %><p>
+      Total Miles: <%= citibike.miles %><p>
     <% end %>
   <% end %>
   <% if @weathers == [] %>
     There is no Weather data for this date!<p>
   <% else %>
     <% @weathers.each do |weather|%>
-      High Temperature: <%= weather.tmax %><p>
-      Low Temperature: <%= weather.tmin %><p>
+      Precipitation (inches): <%= weather.precipitation %><p>
+      High Temperature (&#176;F): <%= weather.tmax %><p>
+      Low Temperature (&#176;F): <%= weather.tmin %><p>
     <% end %>
   <% end %>
   <%= button_to "Search Again", root_path, method: "get" %>
