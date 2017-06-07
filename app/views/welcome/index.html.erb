@@ -1,27 +1,31 @@
 <h1>How Does Weather Affect Bicyclists?</h1>
 <div>
 <% if @citibikes || @weathers %>
-  Date: <%= @date %><p>
+  <h4>Date: <%= @date %></h4>
+  <h5><u>Citibike Info:</u></h5>
   <% if @citibikes == [] %>
-    There is no Citibike data for this date!<p>
+    <b>There is no Citibike data for this date!</b><br /><br />
   <% else %>
     <% @citibikes.each do |citibike|%>
-      Total Trips: <%= citibike.trips %><p>
-      Total Miles: <%= citibike.miles %><p>
+      <b>Total Trips:</b> <%= citibike.trips %><br />
+      <b>Total Miles:</b> <%= citibike.miles %><br />
     <% end %>
   <% end %>
+  <h5><u>Weather Info:</u></h5>
   <% if @weathers == [] %>
-    There is no Weather data for this date!<p>
+    <b>There is no Weather data for this date!</b><br />
   <% else %>
     <% @weathers.each do |weather|%>
-      Precipitation (inches): <%= weather.precipitation %><p>
-      High Temperature (&#176;F): <%= weather.tmax %><p>
-      Low Temperature (&#176;F): <%= weather.tmin %><p>
+      <b>Precipitation (inches):</b> <%= weather.precipitation %><br />
+      <b>High Temperature (&#176;F):</b> <%= weather.tmax %><br />
+      <b>Low Temperature (&#176;F):</b> <%= weather.tmin %><br />
     <% end %>
   <% end %>
+  <br />
   <%= button_to "Search Again", root_path, method: "get" %>
 <% else %>
-  <h3>Input a date to find out:</h3>
+  <h3><%= link_to 'View Comparison Chart', welcome_show_path %></h3>
+  <h3>Input a date to find out more information:</h3>
   <%= form_tag(root_path, method: "get") do %>
     <%= text_field_tag :search, params[:search], placeholder: "DD/MM/YEAR" %>
     <%= submit_tag "Search" %>

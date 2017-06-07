@@ -1,0 +1,66 @@
+<div>
+  <%= line_chart [
+    {name: "Min Temp", pointInterval: 1, data: @min_temps},
+    {name: "Max Temp", data: @max_temps},
+    {name: "Trips", data: @trips},
+    {name: "Miles", data: @miles},
+    ], adapter: "google", library: {
+      legend: "top",
+      title: "Temperature, Citibike Trips & Citibike Total Miles by Date",
+      hAxis: {
+        title: "Date"
+        },
+      vAxes: {
+        0 => {
+          title: "Count of Trips or Miles",
+          viewWindowMode:'explicit',
+          viewWindow:{
+            max:200000,
+            min:0
+          },
+          gridlines: {
+            color: 'transparent'
+          },
+        },
+        1 => {
+          title: "Temperature (F)",
+          gridlines: {
+            color: 'transparent'
+          },
+          format:""
+        },
+      },
+      series: {
+        0 => {
+          targetAxisIndex:1
+        },
+        1 => {
+          targetAxisIndex:1
+        },
+        2 => {
+          targetAxisIndex:0
+        },
+        3 => {
+          targetAxisIndex:0
+        },
+      },
+        colors: ["blue", "red", "orange", "green"]
+    }; %>
+</div>
+<br /><br />
+<h3>Additional Breakdown of Data:</h3>
+<br />
+<div>
+  <%= line_chart [
+    {name: "Min Temp", data: @weathers.map {|weather| [weather.date, weather.tmin]}},
+    {name: "Max Temp", data: @weathers.map {|weather| [weather.date, weather.tmax]}}
+    ], adapter: "google", library: {legend: "top", title: "Temperature by Date", hAxis: {title: "Date"}, vAxis: {title: "Temperature (F)"}} %>
+</div>
+<br />
+<div>
+  <%= line_chart @citibikes.map {|citibike| [citibike.date, citibike.trips]}, adapter: "google", library: {title: "Number of Citibike Trips by Date", hAxis: {title: "Date"}, vAxis: {title: "Trips"}} %>
+</div>
+<br />
+<div>
+  <%= line_chart @citibikes.map {|citibike| [citibike.date, citibike.miles]}, adapter: "google", library: {title: "Number of Citibike Miles by Date", hAxis: {title: "Date"}, vAxis: {title: "Miles"}} %>
+</div>
