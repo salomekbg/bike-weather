@@ -1,14 +1,22 @@
 <h1>How Does Weather Affect Bicyclists?</h1>
 <div>
 <% if @citibikes || @weathers %>
-  <% @citibikes.each do |citibike|%>
-    Date: <%= citibike.date %><p>
-    Total Trips: <%= citibike.trips %><p>
-    Total Mileage: <%= citibike.miles %><p>
+  Date: <%= @date %><p>
+  <% if @citibikes == [] %>
+    There is no Citibike data for this date!<p>
+  <% else %>
+    <% @citibikes.each do |citibike|%>
+      Total Trips: <%= citibike.trips %><p>
+      Total Mileage: <%= citibike.miles %><p>
+    <% end %>
   <% end %>
-  <% @weathers.each do |weather|%>
-    High Temperature: <%= weather.tmax %><p>
-    Low Temperature: <%= weather.tmin %><p>
+  <% if @weathers == [] %>
+    There is no Weather data for this date!<p>
+  <% else %>
+    <% @weathers.each do |weather|%>
+      High Temperature: <%= weather.tmax %><p>
+      Low Temperature: <%= weather.tmin %><p>
+    <% end %>
   <% end %>
   <%= button_to "Search Again", root_path, method: "get" %>
 <% else %>
