@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :citibikes do
     collection do
       # Rails will now recognize /citibikes/<insert action> with specified  mthod and will route to the correct action in CitibikesController
+      get 'index'
       post 'import'
+      delete 'destroy'
     end
   end
 

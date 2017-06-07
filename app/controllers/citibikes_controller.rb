@@ -13,4 +13,9 @@ class CitibikesController < ApplicationController
     redirect_to root_path, notice: "Citibike information imported."
   end
 
+  def destroy
+    Citibike.delete
+    render 'index'
+  end
+
 end

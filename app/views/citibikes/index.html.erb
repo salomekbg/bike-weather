@@ -2,6 +2,7 @@
 <% if @citibikes == nil || @citibikes.empty? %>
   <h3>No Citibike Information to Display!</h3>
 <% else %>
+  <%= button_to "Clear Citibike Data", citibikes_path, method: "delete" %>
   <table>
     <thead>
       <tr>

@@ -17,5 +17,8 @@ class Citibike < ApplicationRecord
   def self.search(date)
     where("date LIKE ?", "%#{date}%")
   end
-  
+
+  def self.delete
+    Citibike.all.delete_all
+  end
 end
