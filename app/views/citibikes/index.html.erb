@@ -1,5 +1,5 @@
 <h1>Citibike Information</h1>
-<% if @citibikes.empty? %>
+<% if @citibikes == nil || @citibikes.empty? %>
   <h3>No Citibike Information to Display!</h3>
 <% else %>
   <table>
