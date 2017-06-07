@@ -9,7 +9,9 @@
   </head>
 
   <body>
-    <%= link_to 'Home', root_path %>
+    <%= link_to 'Home', root_path %><p>
+    <%= link_to 'See Citibike Data', citibikes_path, method: "get" %><p>
+    <%= link_to 'See Weather Data', weathers_path, method: "get" %>
     <%= yield %>
   </body>
 </html>
