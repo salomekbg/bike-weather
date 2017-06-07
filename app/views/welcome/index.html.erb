@@ -1,22 +1,23 @@
-<h1>Does Weather Affect Citibike?</h1>
+<h1>How Does Weather Affect Bicyclists?</h1>
 <div>
-  <h2>Input a date to find out (format: DD/MM/YEAR):</h2>
-  <% if @citibikes || @weathers %>
-    <% @citibikes.each do |citibike|%>
-      Date: <%= citibike.date %><p>
-      Total Trips: <%= citibike.trips %><p>
-      Total Mileage: <%= citibike.miles %>
-    <% end %>
-    <% @weathers.each do |weather|%>
-      On this day, 10 years ago:<p>
-      High Temperature: <%= weather.tmax %><p>
-      Low Temperature: <%= weather.tmin %>
-    <% end %>
+<% if @citibikes || @weathers %>
+  <% @citibikes.each do |citibike|%>
+    Date: <%= citibike.date %><p>
+    Total Trips: <%= citibike.trips %><p>
+    Total Mileage: <%= citibike.miles %><p>
   <% end %>
-  <%= form_tag(citibikes_path, method: "get") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Get Data" %>
+  <% @weathers.each do |weather|%>
+    High Temperature: <%= weather.tmax %><p>
+    Low Temperature: <%= weather.tmin %><p>
+  <% end %>
+  <%= button_to "Search Again", root_path, method: "get" %>
+<% else %>
+  <h3>Input a date to find out:</h3>
+  <%= form_tag(root_path, method: "get") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "DD/MM/YEAR" %>
     <%= submit_tag "Search" %>
   <% end %>
+<% end %>
 </div>
 <br />
 <div>
