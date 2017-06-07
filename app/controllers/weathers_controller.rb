@@ -9,4 +9,8 @@ class WeathersController < ApplicationController
     redirect_to root_path, notice: "Weather information imported."
   end
 
+  def destroy
+    Weather.delete
+    render 'index'
+  end
 end

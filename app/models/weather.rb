@@ -14,4 +14,8 @@ class Weather < ApplicationRecord
   def self.search(date)
     where("date LIKE ?", "%#{date}%")
   end
+
+  def self.delete
+    Weather.all.delete_all
+  end
 end

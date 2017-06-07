@@ -1,8 +1,8 @@
 <h1>Weather Information</h1>
-<% if @weathers.empty? %>
-<h3>No Weather Information to Display!</h3>
+<% if @weathers == nil || @weathers.empty? %>
+  <h3>No Weather Information to Display!</h3>
 <% else %>
-<br />
+  <%= button_to "Clear Weather Data", weathers_path, method: "delete" %>
   <table>
     <thead>
       <tr>

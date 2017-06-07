@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :weathers do
     collection do
+      get 'index'
       post 'import'
+      delete 'destroy'
     end
   end
 
