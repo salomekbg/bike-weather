@@ -12,9 +12,13 @@
   </head>
 
   <body>
-    <%= link_to 'Home', root_path %><p>
-    <%= link_to 'See Citibike Data', citibikes_path, method: "get" %><p>
-    <%= link_to 'See Weather Data', weathers_path, method: "get" %>
+    <div class="nav">
+      <ul>
+        <li><%= link_to 'Home', root_path %></li> |
+        <li><%= link_to 'See Citibike Data', citibikes_path, method: "get" %></li> | 
+        <li><%= link_to 'See Weather Data', weathers_path, method: "get" %></li>
+      </ul>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -13,3 +13,63 @@
  *= require_tree .
  *= require_self
  */
+
+.main {
+   margin-left: 40px;
+}
+
+.csv {
+  border: 1px dashed black;
+  width: 200px;
+  margin-right: 10px;
+  padding: 10px;
+}
+
+ul li {
+  list-style: none;
+  display: inline;
+}
+
+table {
+  width: 35%;
+}
+
+tr, td {
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid #ddd;
+  width: 50px;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+.button {
+  color: black;
+  background-color: red;
+  border: 1px solid black;
+  padding: 10px;
+  float: left;
+  margin-top: -50px;
+  margin-left: 345px;
+}
+
+.button:hover {
+  color: white;
+  background-color: green;
+}
+
+.button:focus {
+  text-decoration: none;
+}
+
+.button:active {
+  background-color: black;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5)
+
+}

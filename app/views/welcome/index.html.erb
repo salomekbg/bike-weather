@@ -1,51 +1,55 @@
-<h1>How Does Weather Affect Bicyclists?</h1>
-<div>
-<% if @citibikes || @weathers %>
-  <h4>Date: <%= @date %></h4>
-  <h5><u>Citibike Info:</u></h5>
-  <% if @citibikes == [] %>
-    <b>There is no Citibike data for this date!</b><br /><br />
-  <% else %>
-    <% @citibikes.each do |citibike|%>
-      <b>Total Trips:</b> <%= citibike.trips %><br />
-      <b>Total Miles:</b> <%= citibike.miles %><br />
-    <% end %>
-  <% end %>
-  <h5><u>Weather Info:</u></h5>
-  <% if @weathers == [] %>
-    <b>There is no Weather data for this date!</b><br />
-  <% else %>
-    <% @weathers.each do |weather|%>
-      <b>Precipitation (inches):</b> <%= weather.precipitation %><br />
-      <b>High Temperature (&#176;F):</b> <%= weather.tmax %><br />
-      <b>Low Temperature (&#176;F):</b> <%= weather.tmin %><br />
-    <% end %>
-  <% end %>
-  <br />
-  <%= button_to "Search Again", root_path, method: "get" %>
-<% else %>
-  <h3><%= link_to 'View Comparison Chart', welcome_show_path %></h3>
-  <h3>Input a date to find out more information:</h3>
-  <%= form_tag(root_path, method: "get") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "DD/MM/YEAR" %>
-    <%= submit_tag "Search" %>
-  <% end %>
-<% end %>
-</div>
-<br />
-<div>
-<h4>Import NYC Citibike CSV File:</h4>
-<!--multipart will pull the file information  -->
-  <%= form_tag import_citibikes_path, multipart: true do %>
-    <%= file_field_tag :citibike_file %>
-    <%= submit_tag "Import Citibike CSV" %>
-  <% end %>
-</div>
+<div class="main">
+  <h1>How Does Weather Affect Bicyclists?</h1>
+  <div>
+    <h3><%= link_to 'View Comparison Chart', welcome_show_path %></h3>
 
-<div>
-<h4>Import NYC Weather CSV File:</h4>
-  <%= form_tag import_weathers_path, multipart: true do %>
-    <%= file_field_tag :weather_file %>
-    <%= submit_tag "Import Weather CSV" %>
+    <% if @citibikes || @weathers %>
+      <h4>Date: <%= @date %></h4>
+      <h5><u>Citibike Info:</u></h5>
+      <% if @citibikes == [] %>
+        <b>There is no Citibike data for this date!</b><br /><br />
+      <% else %>
+        <% @citibikes.each do |citibike|%>
+        <b>Total Trips:</b> <%= citibike.trips %><br />
+        <b>Total Miles:</b> <%= citibike.miles %><br />
+      <% end %>
+    <% end %>
+
+    <h5><u>Weather Info:</u></h5>
+    <% if @weathers == [] %>
+      <b>There is no Weather data for this date!</b><br />
+    <% else %>
+      <% @weathers.each do |weather|%>
+        <b>Precipitation (inches):</b> <%= weather.precipitation %><br />
+        <b>High Temperature (&#176;F):</b> <%= weather.tmax %><br />
+        <b>Low Temperature (&#176;F):</b> <%= weather.tmin %><br />
+      <% end %>
+    <% end %>
+    <br />
+    <%= button_to "Search Again", root_path, method: "get" %>
+  <% else %>
+    <h3>Input a date to find out more information:</h3>
+    <%= form_tag(root_path, method: "get") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "DD/MM/YEAR" %>
+      <%= submit_tag "Search" %>
+    <% end %>
   <% end %>
+  </div>
+  <br />
+  <div class="csv">
+    <h4>Import NYC Citibike CSV File:</h4>
+    <!--multipart will pull the file information  -->
+    <%= form_tag import_citibikes_path, multipart: true do %>
+      <%= file_field_tag :citibike_file %><br />
+      <%= submit_tag "Import Citibike CSV" %>
+    <% end %>
+  </div>
+  <br />
+  <div class="csv">
+    <h4>Import NYC Weather CSV File:</h4>
+    <%= form_tag import_weathers_path, multipart: true do %>
+      <%= file_field_tag :weather_file %><br />
+      <%= submit_tag "Import Weather CSV" %>
+    <% end %>
+  </div>
 </div>

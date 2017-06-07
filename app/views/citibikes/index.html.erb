@@ -1,26 +1,28 @@
-<h1>Citibike Information</h1>
-<%= flash[:notice] %><p>
-<% if @citibikes == nil || @citibikes.empty? %>
-  <h3>No Citibike Information to Display!</h3>
-<% else %>
-  <%= button_to "Clear Citibike Data", citibikes_path, method: "delete" %>
-  <br />
-  <table>
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Trips</th>
-        <th>Miles</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @citibikes.each do |citibike| %>
+<div class="main">
+  <h1>Citibike Information</h1>
+  <%= flash[:notice] %><p>
+  <% if @citibikes == nil || @citibikes.empty? %>
+    <h3>No Citibike Information to Display!</h3>
+  <% else %>
+    <%= button_to "Clear Citibike Data", citibikes_path, method: "delete", class: "button" %>
+    <br />
+    <table>
+      <thead>
         <tr>
-          <td><%= citibike.date %></td>
-          <td><%= citibike.trips %></td>
-          <td><%= citibike.miles %></td>
+          <th>Date</th>
+          <th>Trips</th>
+          <th>Miles</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% end %>
+      </thead>
+      <tbody>
+        <% @citibikes.each do |citibike| %>
+          <tr>
+            <td><%= citibike.date %></td>
+            <td><%= citibike.trips %></td>
+            <td><%= citibike.miles %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
