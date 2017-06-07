@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
       @citibikes = Citibike.search(params[:search])
       @weathers = Weather.search(params[:search])
     end
+    render 'index'
   end
 
 end
