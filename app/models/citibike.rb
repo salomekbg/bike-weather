@@ -9,7 +9,11 @@ class Citibike < ApplicationRecord
       citibike_date_array[1].length == 1 ? citibike_date_array[1].insert(0, "0") : nil
       citibike_date_array[2].length == 2 ? citibike_date_array[2].insert(0, "20") : nil
       citibike_hash["Date"] = citibike_date_array.join('/')
-      Citibike.create(date: citibike_hash["Date"], trips: citibike_hash["Trips over the past 24-hours (midnight to 11:59pm)"], miles: citibike_hash["Miles traveled today (midnight to 11:59 pm)"])
+      if Citibike.exists?(date: citibike_hash["Date"])
+        Citibike.where(date: citibike_hash["Date"]).update(trips: citibike_hash["Trips over the past 24-hours (midnight to 11:59pm)"], miles: citibike_hash["Miles traveled today (midnight to 11:59 pm)"])
+      else
+        Citibike.create(date: citibike_hash["Date"], trips: citibike_hash["Trips over the past 24-hours (midnight to 11:59pm)"], miles: citibike_hash["Miles traveled today (midnight to 11:59 pm)"])
+      end
     end
   end
 
