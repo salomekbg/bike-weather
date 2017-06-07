@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :citibikes do
     collection do
-      # Rails will now recognize /citibikes/import with POST and will route to the import action in CitibikesController
+      # Rails will now recognize /citibikes/<insert action> with specified  mthod and will route to the correct action in CitibikesController
       post 'import'
     end
   end
